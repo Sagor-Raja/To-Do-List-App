@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#2D3748"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="2dp"
+    android:padding="12dp">
+
+    <!-- 1. Left Serial Number -->
+    <TextView
+        android:id="@+id/tvSerial"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="#A0AEC0"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <!-- 2. Task Text -->
+    <TextView
+        android:id="@+id/tvTaskName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Your Task Here..."
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_marginStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <!-- 3. Tick Mark Box -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnDone"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#48BB78"
+        android:layout_marginEnd="8dp"
+        app:cardElevation="0dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/checkbox_on_background"
+            app:tint="#FFFFFF"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 4. Cross Mark Box -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnCancel"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#ED8936"
+        android:layout_marginEnd="16dp"
+        app:cardElevation="0dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_delete"
+            android:rotation="45"
+            app:tint="#FFFFFF"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 5. Delete Action Box (Right Side) -->
+    <ImageView
+        android:id="@+id/btnDeleteTask"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@android:drawable/ic_menu_delete"
+        app:tint="#F56565"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+</LinearLayout>
