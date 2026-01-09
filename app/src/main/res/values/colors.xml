@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Gold Premium Colors -->
+    <color name="premium_dark">#121212</color>
+    <color name="premium_gold">#D4AF37</color>
+    <color name="premium_gold_light">#F9E79F</color>
+    <color name="premium_card_bg">#1E1E1E</color>
+    
+    <!-- Claymorphism Shadows -->
+    <color name="clay_shadow_light">#333333</color>
+    <color name="clay_shadow_dark">#000000</color>
+
+    <!-- Futuristic / Neon Colors -->
+    <color name="futuristic_bg">#050505</color>
+    <color name="neon_cyan">#00FFFF</color>
+    <color name="neon_purple">#BC13FE</color>
+    <color name="neon_pink">#FF00FF</color>
+    <color name="neon_blue">#1F51FF</color>
+    <color name="card_dark_overlay">#1A1A1A</color>
+</resources>
