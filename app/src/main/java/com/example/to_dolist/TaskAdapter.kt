@@ -31,7 +31,6 @@ class TaskAdapter(
         holder.tvSerial.text = (position + 1).toString()
         holder.tvTaskName.text = task.title
 
-        // Status handling
         updateTaskStyle(holder.tvTaskName, task)
 
         holder.btnDone.setOnClickListener {

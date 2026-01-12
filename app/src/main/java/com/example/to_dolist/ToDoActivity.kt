@@ -1,12 +1,12 @@
 package com.example.to_dolist
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 
 class ToDoActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class ToDoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_to_do)
 
         val etNewTask = findViewById<EditText>(R.id.etNewTask)
-        val btnAddTask = findViewById<Button>(R.id.btnAddTask)
+        val btnAddTask = findViewById<MaterialButton>(R.id.btnAddTask)
         val rvTasks = findViewById<RecyclerView>(R.id.rvTasks)
 
         // Setup RecyclerView
@@ -39,7 +39,6 @@ class ToDoActivity : AppCompatActivity() {
                 taskList.add(newTask)
                 adapter.notifyItemInserted(taskList.size - 1)
                 etNewTask.text.clear()
-                // Scroll to the bottom
                 rvTasks.scrollToPosition(taskList.size - 1)
             } else {
                 Toast.makeText(this, "Please enter a task", Toast.LENGTH_SHORT).show()
