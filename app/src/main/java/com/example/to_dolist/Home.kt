@@ -75,10 +75,7 @@ class Home : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    // Already on the home screen, do nothing.
-                    true
-                }
+                R.id.nav_home -> true
                 R.id.nav_todo -> {
                     startActivity(Intent(this, ToDoActivity::class.java))
                     true
@@ -95,14 +92,10 @@ class Home : AppCompatActivity() {
                      startActivity(Intent(this, IdeaActivity::class.java))
                     true
                 }
-//                R.id.nav_goal -> {
-//                    startActivity(Intent(this, GoalProgressActivity::class.java))
-//                    true
-//                }
+                // Removed non-existing nav_goal to prevent crash
                 else -> false
             }
         }
-        // Set the home item as selected by default
         bottomNav.menu.findItem(R.id.nav_home).isChecked = true
     }
 }

@@ -41,42 +41,50 @@
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 
-    <!-- AI Chat Window -->
-    <com.google.android.material.card.MaterialCardView
+    <!-- AI Response Display Area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollResponse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
         android:layout_above="@+id/inputArea"
         android:layout_margin="16dp"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="0dp"
-        android:backgroundTint="@android:color/transparent">
+        android:scrollbars="none">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/glass_card_bg"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="@android:color/transparent">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@android:drawable/ic_menu_help"
-                app:tint="#8B5CF6"
-                android:alpha="0.5"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="How can I help you today?"
-                android:textColor="#64748B"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp"/>
+                android:background="@drawable/glass_card_bg"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/tvResponse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hi there! Ask me anything, and I'll do my best to help you."
+                    android:textColor="#1E293B"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="4dp" />
+
+                <ProgressBar
+                    android:id="@+id/pbLoading"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- AI Input Area -->
     <LinearLayout
@@ -94,8 +102,9 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             android:backgroundTint="@android:color/transparent">
-
+            
             <EditText
+                android:id="@+id/etQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/glass_card_bg"
@@ -105,18 +114,21 @@
                 android:textColor="#1E293B"
                 android:textColorHint="#64748B"
                 android:textSize="15sp"
-                android:inputType="text"/>
+                android:inputType="textLongMessage"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAsk"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_marginStart="12dp"
-            android:src="@android:drawable/ic_menu_send"
+            android:padding="0dp"
+            app:icon="@android:drawable/ic_menu_send"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:cornerRadius="16dp"
             app:backgroundTint="#8B5CF6"
-            app:tint="#FFFFFF"
-            app:elevation="4dp"
-            app:fabSize="normal" />
+            app:elevation="4dp"/>
 
     </LinearLayout>
 

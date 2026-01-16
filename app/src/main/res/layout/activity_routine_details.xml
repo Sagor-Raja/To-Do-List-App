@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_gradient">
+
+    <!-- Premium Master Header with Fixed Height for Better Centering -->
+    <RelativeLayout
+        android:id="@+id/headerArea"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <!-- Centered Title Group -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvRoutineDetailsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily Master Plan"
+                android:textColor="#0F172A"
+                android:textSize="28sp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvProgressStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0% Completed"
+                android:textColor="#64748B"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:alpha="0.8" />
+        </LinearLayout>
+
+        <!-- Elegant Reset Button at the Corner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnReset"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="56dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#66FFFFFF"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="#FFFFFF">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/stat_notify_sync"
+                android:padding="12dp"
+                app:tint="#1E293B" />
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+    <!-- Progress Indicator - Stylized -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/routineProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerArea"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="24dp"
+        android:progress="0"
+        app:trackThickness="8dp"
+        app:trackCornerRadius="10dp"
+        app:indicatorColor="#6366F1"
+        app:trackColor="#266366F1" />
+
+    <!-- Professional Timeline List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRoutineTasks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/routineProgress"
+        android:layout_above="@+id/inputArea"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"
+        tools:listitem="@layout/item_todo_pro" />
+
+    <!-- Modern Premium Input Area -->
+    <RelativeLayout
+        android:id="@+id/inputArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="20dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="6dp">
+
+                <EditText
+                    android:id="@+id/etNewRoutineTask"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Add your next goal..."
+                    android:textColor="#1E293B"
+                    android:textColorHint="#94A3B8"
+                    android:background="@android:color/transparent"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="12dp"
+                    android:textSize="16sp"
+                    android:inputType="textCapSentences"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddRoutineTask"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:padding="0dp"
+                    app:icon="@android:drawable/ic_input_add"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:cornerRadius="20dp"
+                    app:backgroundTint="#6366F1"
+                    app:elevation="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TaskAdapter(
     private val tasks: MutableList<Task>,
+    private val onStatusChanged: () -> Unit,
     private val onDeleteClick: (Int) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
@@ -37,16 +38,19 @@ class TaskAdapter(
             task.isDone = !task.isDone
             if (task.isDone) task.isCancelled = false
             notifyItemChanged(position)
+            onStatusChanged() // Notify activity to update progress
         }
 
         holder.btnCancel.setOnClickListener {
             task.isCancelled = !task.isCancelled
             if (task.isCancelled) task.isDone = false
             notifyItemChanged(position)
+            onStatusChanged() // Notify activity to update progress
         }
 
         holder.btnDelete.setOnClickListener {
             onDeleteClick(position)
+            onStatusChanged() // Notify activity to update progress after deletion
         }
     }
 

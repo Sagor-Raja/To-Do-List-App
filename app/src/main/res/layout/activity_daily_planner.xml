@@ -7,93 +7,341 @@
     android:background="@drawable/main_bg_gradient"
     tools:context=".DailyPlannerActivity">
 
-    <!-- Glass Header Section -->
+    <!-- Premium Header Section -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="40dp"
+        android:paddingTop="48dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="20dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daily Plan"
-            android:textColor="#1E293B"
-            android:textSize="32sp"
-            android:fontFamily="sans-serif-black" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily Planner"
+                android:textColor="#1E293B"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Organize your life with ease"
+                android:textColor="#64748B"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#4DFFFFFF">
+            app:cardBackgroundColor="#4DFFFFFF"
+            app:strokeWidth="1dp"
+            app:strokeColor="#33FFFFFF">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@android:drawable/ic_menu_revert"
-                android:padding="8dp"
+                android:padding="10dp"
                 app:tint="#334155" />
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 
-    <!-- Scrollable Content Area -->
+    <!-- Scrollable Content Grid -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
         android:scrollbars="none"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingBottom="32dp">
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:columnCount="2"
+            android:padding="12dp"
+            android:alignmentMode="alignMargins">
 
-            <!-- Section: Morning -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Morning"
-                android:textColor="#64748B"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:textAllCaps="true"/>
+            <!-- Card 1: Daily Routine -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDaily"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#E0F7FA">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_agenda"
+                            app:tint="#00BCD4"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Full Day"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Standard Plan 📝"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- RecyclerView for dynamic data -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDailyPlan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_routine_card"
-                android:nestedScrollingEnabled="false"/>
+            <!-- Card 2: Morning -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMorning"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#FFF3E0">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_day"
+                            app:tint="#FF9800"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Morning"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Fresh Start ☀️"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+            <!-- Card 3: Afternoon -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAfternoon"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#E3F2FD">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_today"
+                            app:tint="#2196F3"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Afternoon"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Focus Mode 🚀"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Evening -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEvening"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#F3E5F5">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_view"
+                            app:tint="#9C27B0"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Evening"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Relax Time ☕"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 5: Night -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNight"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#E8EAF6">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_my_calendar"
+                            app:tint="#3F51B5"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Night"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Deep Sleep 🌙"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 6: Health -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHealthy"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#E8F5E9">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_call"
+                            app:tint="#4CAF50"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Health"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Stay Fit 🥗"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 7: Wealth -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWealth"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#FFF8E1">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_save"
+                            app:tint="#FFC107"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Wealth"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Grow Money 💰"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 8: Gym -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGym"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#FFEBEE">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_mylocation"
+                            app:tint="#F44336"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Gym"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="No Pain Gain 💪"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 9: Study -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardStudy"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#EDE7F6">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_sort_by_size"
+                            app:tint="#673AB7"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Study"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Knowledge 📚"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 10: Discipline -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDiscipline"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#E0F2F1">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_lock_idle_alarm"
+                            app:tint="#009688"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Discipline"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Consistency ⏲️"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 11: Habits -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHabits"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#F1F8E9">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_recent_history"
+                            app:tint="#7CB342"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Habits"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Build 🔄"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 12: Rich Routine -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMillionaire"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#FFF3E0">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/star_big_on"
+                            app:tint="#FF6D00"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Success"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Success Path 💎"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 13: Customize -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCustomize"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#F5F5F5">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_menu_manage"
+                            app:tint="#616161"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Settings"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Edit Plan ⚙️"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 14: Add New -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAdd"
+                style="@style/RoutineCardStyle">
+                <LinearLayout style="@style/RoutineInnerLayout">
+                    <androidx.cardview.widget.CardView
+                        style="@style/IconContainerStyle"
+                        app:cardBackgroundColor="#212121">
+                        <ImageView
+                            style="@style/IconImageStyle"
+                            android:src="@android:drawable/ic_input_add"
+                            app:tint="#FFFFFF"/>
+                    </androidx.cardview.widget.CardView>
+                    <View style="@style/SpacerView"/>
+                    <TextView style="@style/RoutineTitleText" android:text="Add New"/>
+                    <TextView style="@style/RoutineSubtitleText" android:text="Create ✨"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- Extended FAB for Adding Routine -->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabAddRoutine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="24dp"
-        android:text="Add Routine"
-        android:textColor="#FFFFFF"
-        app:icon="@android:drawable/ic_input_add"
-        app:iconTint="#FFFFFF"
-        app:backgroundTint="#8B5CF6"
-        app:elevation="8dp"/>
 
 </RelativeLayout>

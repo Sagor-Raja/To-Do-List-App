@@ -21,12 +21,17 @@ class ToDoActivity : AppCompatActivity() {
         val btnAddTask = findViewById<MaterialButton>(R.id.btnAddTask)
         val rvTasks = findViewById<RecyclerView>(R.id.rvTasks)
 
-        // Setup RecyclerView
-        adapter = TaskAdapter(taskList) { position ->
-            taskList.removeAt(position)
-            adapter.notifyDataSetChanged()
-            Toast.makeText(this, "Task removed", Toast.LENGTH_SHORT).show()
-        }
+        // Setup RecyclerView with empty status change listener for now
+        adapter = TaskAdapter(taskList, 
+            onStatusChanged = {
+                // You can add progress logic here later if you add a progress bar to activity_to_do.xml
+            },
+            onDeleteClick = { position ->
+                taskList.removeAt(position)
+                adapter.notifyDataSetChanged()
+                Toast.makeText(this, "Task removed", Toast.LENGTH_SHORT).show()
+            }
+        )
         
         rvTasks.layoutManager = LinearLayoutManager(this)
         rvTasks.adapter = adapter

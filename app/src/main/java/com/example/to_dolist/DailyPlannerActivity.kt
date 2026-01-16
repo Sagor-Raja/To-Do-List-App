@@ -1,36 +1,56 @@
 package com.example.to_dolist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
 class DailyPlannerActivity : AppCompatActivity() {
-
-    private lateinit var adapter: RoutineAdapter
-    private val routineList = ArrayList<Routine>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_planner)
 
-        val rvDailyPlan = findViewById<RecyclerView>(R.id.rvDailyPlan)
+        // All Cards IDs from XML
+        val cardDaily = findViewById<MaterialCardView>(R.id.cardDaily)
+        val cardMorning = findViewById<MaterialCardView>(R.id.cardMorning)
+        val cardAfternoon = findViewById<MaterialCardView>(R.id.cardAfternoon)
+        val cardEvening = findViewById<MaterialCardView>(R.id.cardEvening)
+        val cardNight = findViewById<MaterialCardView>(R.id.cardNight)
+        val cardHealthy = findViewById<MaterialCardView>(R.id.cardHealthy)
+        val cardWealth = findViewById<MaterialCardView>(R.id.cardWealth)
+        val cardGym = findViewById<MaterialCardView>(R.id.cardGym)
+        val cardStudy = findViewById<MaterialCardView>(R.id.cardStudy)
+        val cardDiscipline = findViewById<MaterialCardView>(R.id.cardDiscipline)
+        val cardCustomize = findViewById<MaterialCardView>(R.id.cardCustomize)
+        val cardHabits = findViewById<MaterialCardView>(R.id.cardHabits)
+        val cardMillionaire = findViewById<MaterialCardView>(R.id.cardMillionaire)
+        val cardAdd = findViewById<MaterialCardView>(R.id.cardAdd)
 
-        // Adding some sample routine data
-        routineList.add(Routine("06:30 AM", "Morning Exercise", "Yoga & Warm-up"))
-        routineList.add(Routine("07:30 AM", "Breakfast", "Healthy meal to start the day"))
-        routineList.add(Routine("09:00 AM", "Office Work", "Focus on important tasks"))
-        routineList.add(Routine("01:30 PM", "Lunch Break", "Nutritious lunch & rest"))
-        routineList.add(Routine("06:00 PM", "Evening Walk", "Refreshing walk in nature"))
-        routineList.add(Routine("10:30 PM", "Sleep", "Good night rest"))
+        // Click Logic for all cards
+        val cards = mapOf(
+            cardDaily to "Daily Routine",
+            cardMorning to "Morning Routine",
+            cardAfternoon to "Afternoon Routine",
+            cardEvening to "Evening Routine",
+            cardNight to "Night Routine",
+            cardHealthy to "Health & Fitness",
+            cardWealth to "Wealth Management",
+            cardGym to "Gym & Workout",
+            cardStudy to "Study Plan",
+            cardDiscipline to "Discipline Mode",
+            cardCustomize to "Custom Settings",
+            cardHabits to "Habit Tracker",
+            cardMillionaire to "Millionaire Mindset",
+            cardAdd to "Create New Plan"
+        )
 
-        adapter = RoutineAdapter(routineList)
-        rvDailyPlan.layoutManager = LinearLayoutManager(this)
-        rvDailyPlan.adapter = adapter
-
-        // Back button logic
-        findViewById<android.view.View>(R.id.btnBack).setOnClickListener {
-            finish()
+        for ((card, title) in cards) {
+            card.setOnClickListener {
+                val intent = Intent(this, RoutineDetailsActivity::class.java)
+                intent.putExtra("ROUTINE_TITLE", title)
+                startActivity(intent)
+            }
         }
     }
 }

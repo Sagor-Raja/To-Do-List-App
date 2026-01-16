@@ -312,7 +312,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 7. Ask AI (Premium Wide Card) -->
+            <!-- 7. Ask AI -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_ask_ai"
                 android:layout_width="match_parent"
@@ -332,7 +332,7 @@
                     <ImageView
                         android:layout_width="44dp"
                         android:layout_height="44dp"
-                        android:src="@android:drawable/ic_menu_help"
+                        android:src="@android:drawable/ic_dialog_info"
                         app:tint="#8B5CF6"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -349,7 +349,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Smart assistance for you"
+                            android:text="Smart AI Assistant"
                             android:textSize="13sp"
                             android:textColor="#64748B"/>
                     </LinearLayout>
@@ -359,7 +359,7 @@
         </GridLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Glass Floating Bottom Navigation -->
+    <!-- Bottom Navigation Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottom_nav_card"
         android:layout_width="match_parent"
@@ -369,7 +369,7 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="8dp"
         android:backgroundTint="@android:color/transparent">
-
+        
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
