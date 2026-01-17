@@ -3,23 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="24dp"
+    android:background="@color/premium_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Details"
+        android:textColor="@color/premium_gold"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/etTransactionTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="লেনদেনের নাম (যেমন: বেতন, বাজার)"
+        android:layout_height="56dp"
+        android:hint="Title (e.g. Salary, Rent)"
         android:inputType="textCapSentences"
-        android:padding="12dp"
-        android:layout_marginBottom="12dp"/>
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/premium_gold"
+        android:textColorHint="#66D4AF37"
+        android:background="@color/white"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etTransactionAmount"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="টাকার পরিমাণ"
+        android:layout_height="56dp"
+        android:hint="Amount ($)"
+        android:textColor="@color/premium_gold"
+        android:textColorHint="#66D4AF37"
+        android:background="@color/white"
         android:inputType="numberDecimal"
-        android:padding="12dp"/>
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
 
 </LinearLayout>

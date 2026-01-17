@@ -1,47 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_gradient">
+    android:background="@color/premium_dark"
+    tools:context=".AskAIActivity">
 
-    <!-- Header -->
+    <!-- 1. Elegant Header -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="40dp"
+        android:paddingTop="20dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="12dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ask AI"
-            android:textColor="#1E293B"
-            android:textSize="32sp"
-            android:fontFamily="sans-serif-black" />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ask AI"
+                android:textColor="#1E293B"
+                android:textSize="34sp"
+                android:fontFamily="sans-serif-black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your intelligent productivity partner"
+                android:textColor="#64748B"
+                android:textSize="14sp"/>
+        </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#4DFFFFFF">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:strokeWidth="1dp"
+            app:strokeColor="#F1F5F9">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@android:drawable/ic_menu_revert"
-                android:padding="8dp"
-                app:tint="#334155" />
+                android:padding="12dp"
+                app:tint="#1E293B" />
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 
-    <!-- AI Response Display Area -->
+    <!-- 2. Chat / Response Area -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollResponse"
         android:layout_width="match_parent"
@@ -49,86 +64,132 @@
         android:layout_below="@id/header"
         android:layout_above="@+id/inputArea"
         android:layout_margin="16dp"
+        android:clipToPadding="false"
         android:scrollbars="none">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="@android:color/transparent">
+            android:orientation="vertical">
 
+            <!-- Empty State Illustration Placeholder -->
             <LinearLayout
+                android:id="@+id/emptyState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/glass_card_bg"
                 android:orientation="vertical"
-                android:padding="20dp">
-
+                android:gravity="center"
+                android:layout_marginTop="60dp"
+                android:visibility="visible">
+                
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#1A8B5CF6">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@android:drawable/ic_menu_help"
+                        android:padding="24dp"
+                        app:tint="#8B5CF6"
+                        android:alpha="0.6"/>
+                </com.google.android.material.card.MaterialCardView>
+                
                 <TextView
-                    android:id="@+id/tvResponse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How can I help you today?"
+                    android:textColor="#94A3B8"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <!-- Response Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/responseCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@android:color/transparent"
+                android:visibility="gone">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hi there! Ask me anything, and I'll do my best to help you."
-                    android:textColor="#1E293B"
-                    android:textSize="16sp"
-                    android:lineSpacingExtra="4dp" />
+                    android:background="@drawable/glass_card_bg"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-                <ProgressBar
-                    android:id="@+id/pbLoading"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/tvResponse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1E293B"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="8dp" />
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ProgressBar
+                        android:id="@+id/pbLoading"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:indeterminateTint="#8B5CF6"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- AI Input Area -->
+    <!-- 3. Premium Floating Input Area -->
     <LinearLayout
         android:id="@+id/inputArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"
+        android:padding="20dp"
         android:gravity="center_vertical">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:layout_weight="1"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="@android:color/transparent">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#FFFFFF">
             
             <EditText
                 android:id="@+id/etQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/glass_card_bg"
-                android:hint="Type your question..."
-                android:paddingStart="20dp"
+                android:background="@android:color/transparent"
+                android:hint="Type a message..."
+                android:paddingStart="24dp"
                 android:paddingEnd="20dp"
                 android:textColor="#1E293B"
-                android:textColorHint="#64748B"
-                android:textSize="15sp"
+                android:textColorHint="#94A3B8"
+                android:textSize="16sp"
                 android:inputType="textLongMessage"/>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAsk"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="60dp"
+            android:layout_height="64dp"
             android:layout_marginStart="12dp"
             android:padding="0dp"
             app:icon="@android:drawable/ic_menu_send"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:cornerRadius="16dp"
+            app:cornerRadius="20dp"
             app:backgroundTint="#8B5CF6"
-            app:elevation="4dp"/>
+            app:elevation="6dp"/>
 
     </LinearLayout>
 

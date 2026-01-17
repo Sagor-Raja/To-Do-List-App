@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_gradient"
-    tools:context=".ToDoActivity">
+    tools:context=".ToDoActivity"
+    android:background="@color/premium_dark">
 
     <!-- Glass Header Section -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="40dp"
-        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingStart="4dp"
         android:paddingEnd="24dp"
         android:paddingBottom="16dp">
 
@@ -38,8 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:padding="8dp"
-                app:tint="#334155" />
+                android:padding="10.dp"
+                app:tint="#3172CE" />
         </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 

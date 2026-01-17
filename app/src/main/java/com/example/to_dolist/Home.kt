@@ -2,6 +2,7 @@ package com.example.to_dolist
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
@@ -13,14 +14,14 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Card Click Listeners
-        val cardTodo = findViewById<MaterialCardView>(R.id.card_todo)
-        val cardDailyPlanner = findViewById<MaterialCardView>(R.id.card_daily_planner)
-        val cardCalculator = findViewById<MaterialCardView>(R.id.card_calculate_cost)
-        val cardGoalProgress = findViewById<MaterialCardView>(R.id.card_goal_progress)
-        val cardIdea = findViewById<MaterialCardView>(R.id.card_idea)
-        val cardDocument = findViewById<MaterialCardView>(R.id.card_document)
-        val cardAskAi = findViewById<MaterialCardView>(R.id.card_ask_ai)
+        // Card Click Listeners (Updated types to match XML FrameLayout)
+        val cardTodo = findViewById<FrameLayout>(R.id.card_todo)
+        val cardDailyPlanner = findViewById<FrameLayout>(R.id.card_daily_planner)
+        val cardCalculator = findViewById<FrameLayout>(R.id.card_calculate_cost)
+        val cardGoalProgress = findViewById<FrameLayout>(R.id.card_goal_progress)
+        val cardIdea = findViewById<FrameLayout>(R.id.card_idea)
+        val cardDocument = findViewById<FrameLayout>(R.id.card_document)
+        val cardAskAi = findViewById<FrameLayout>(R.id.card_ask_ai)
 
         cardTodo.setOnClickListener {
             startActivity(Intent(this, ToDoActivity::class.java))
@@ -92,7 +93,6 @@ class Home : AppCompatActivity() {
                      startActivity(Intent(this, IdeaActivity::class.java))
                     true
                 }
-                // Removed non-existing nav_goal to prevent crash
                 else -> false
             }
         }

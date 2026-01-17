@@ -2,6 +2,7 @@ package com.example.to_dolist
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -49,7 +50,7 @@ class CalculatorActivity : AppCompatActivity() {
             if (tabLayout.selectedTabPosition == 0) {
                 showEditDeleteDialog(position)
             } else {
-                Toast.makeText(this, "সারাংশ এডিট বা ডিলিট করা যাবে না", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Summaries cannot be edited or deleted", Toast.LENGTH_SHORT).show()
             }
         }
         rvDataList.layoutManager = LinearLayoutManager(this)
@@ -79,7 +80,7 @@ class CalculatorActivity : AppCompatActivity() {
             if (tabLayout.selectedTabPosition == 0) {
                 showAddTransactionDialog()
             } else {
-                Toast.makeText(this, "লেনদেন যোগ করতে 'দিন' ট্যাব সিলেক্ট করুন", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Select 'Day' tab to add transactions", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -94,7 +95,7 @@ class CalculatorActivity : AppCompatActivity() {
         etAmount.setText(transaction.amount.toString())
         
         AlertDialog.Builder(this)
-            .setTitle("লেনদেন পরিবর্তন করুন")
+            .setTitle("Edit Transaction")
             .setView(dialogView)
             .setPositiveButton("Update") { _, _ ->
                 val newTitle = etTitle.text.toString()
@@ -103,16 +104,16 @@ class CalculatorActivity : AppCompatActivity() {
                     transactionList[position] = Transaction(transaction.id, newTitle, newAmount, transaction.type)
                     adapter.notifyItemChanged(position)
                     calculateAndShowSummary(tvSummaryTitle.text.toString())
-                    Toast.makeText(this, "আপডেট করা হয়েছে", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Updated successfully", Toast.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton("Delete") { _, _ ->
                 transactionList.removeAt(position)
                 adapter.notifyItemRemoved(position)
                 calculateAndShowSummary(tvSummaryTitle.text.toString())
-                Toast.makeText(this, "মুছে ফেলা হয়েছে", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Deleted successfully", Toast.LENGTH_SHORT).show()
             }
-            .setNeutralButton("বাতিল", null)
+            .setNeutralButton("Cancel", null)
             .show()
     }
 
@@ -128,10 +129,10 @@ class CalculatorActivity : AppCompatActivity() {
 
     private fun updatePeriodDisplay() {
         val format = when (tabLayout.selectedTabPosition) {
-            0 -> SimpleDateFormat("dd MMM", Locale("bn", "BD"))
-            1 -> SimpleDateFormat("MMMM yyyy", Locale("bn", "BD"))
-            2 -> SimpleDateFormat("yyyy", Locale("bn", "BD"))
-            else -> SimpleDateFormat("dd MMM", Locale("bn", "BD"))
+            0 -> SimpleDateFormat("dd MMM", Locale.ENGLISH)
+            1 -> SimpleDateFormat("MMMM yyyy", Locale.ENGLISH)
+            2 -> SimpleDateFormat("yyyy", Locale.ENGLISH)
+            else -> SimpleDateFormat("dd MMM", Locale.ENGLISH)
         }
         tvSelectedPeriod.text = format.format(currentDate.time)
     }
@@ -150,21 +151,21 @@ class CalculatorActivity : AppCompatActivity() {
         val etAmount = dialogView.findViewById<EditText>(R.id.etTransactionAmount)
 
         AlertDialog.Builder(this)
-            .setTitle("নতুন লেনদেন যোগ করুন")
+            .setTitle("Add New Transaction")
             .setView(dialogView)
-            .setPositiveButton("আয় (Income)") { _, _ ->
+            .setPositiveButton("Income") { _, _ ->
                 addTransaction(etTitle.text.toString(), etAmount.text.toString(), "Income")
             }
-            .setNegativeButton("খরচ (Expense)") { _, _ ->
+            .setNegativeButton("Expense") { _, _ ->
                 addTransaction(etTitle.text.toString(), etAmount.text.toString(), "Expense")
             }
-            .setNeutralButton("বাতিল", null)
+            .setNeutralButton("Cancel", null)
             .show()
     }
 
     private fun addTransaction(title: String, amountStr: String, type: String) {
         if (title.isEmpty() || amountStr.isEmpty()) {
-            Toast.makeText(this, "সবগুলো ঘর পূরণ করুন", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -175,31 +176,31 @@ class CalculatorActivity : AppCompatActivity() {
         adapter.notifyItemInserted(0)
 
         calculateAndShowSummary(tvSummaryTitle.text.toString())
-        Toast.makeText(this, "লেনদেন সফলভাবে যোগ হয়েছে", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Transaction added successfully", Toast.LENGTH_SHORT).show()
     }
 
     private fun loadDayData() {
         transactionList.clear()
-        transactionList.add(Transaction(1, "অফিস বেতন", 25000.0, "Income"))
-        transactionList.add(Transaction(2, "রিকশা ভাড়া", 50.0, "Expense"))
+        transactionList.add(Transaction(1, "Office Salary", 25000.0, "Income"))
+        transactionList.add(Transaction(2, "Transport Fare", 50.0, "Expense"))
         adapter.notifyDataSetChanged()
-        calculateAndShowSummary("আজকের সারাংশ")
+        calculateAndShowSummary("Today's Summary")
     }
 
     private fun loadMonthData() {
         transactionList.clear()
-        transactionList.add(Transaction(1, "০১ জানু", 500.0, "Expense"))
-        transactionList.add(Transaction(2, "০২ জানু", 25000.0, "Income"))
+        transactionList.add(Transaction(1, "01 Jan", 500.0, "Expense"))
+        transactionList.add(Transaction(2, "02 Jan", 25000.0, "Income"))
         adapter.notifyDataSetChanged()
-        calculateAndShowSummary("মাসের সারাংশ")
+        calculateAndShowSummary("Monthly Summary")
     }
 
     private fun loadYearData() {
         transactionList.clear()
-        transactionList.add(Transaction(1, "জানুয়ারি", 12500.0, "Expense"))
-        transactionList.add(Transaction(2, "ফেব্রুয়ারি", 10000.0, "Expense"))
+        transactionList.add(Transaction(1, "January", 12500.0, "Expense"))
+        transactionList.add(Transaction(2, "February", 10000.0, "Expense"))
         adapter.notifyDataSetChanged()
-        calculateAndShowSummary("বছরের সারাংশ")
+        calculateAndShowSummary("Yearly Summary")
     }
 
     private fun calculateAndShowSummary(title: String) {
@@ -217,8 +218,8 @@ class CalculatorActivity : AppCompatActivity() {
         val balance = totalIncome - totalExpense
 
         tvSummaryTitle.text = title
-        tvTotalIncome.text = "+ ৳ ${totalIncome.toInt()}"
-        tvTotalExpense.text = "- ৳ ${totalExpense.toInt()}"
-        tvBalance.text = "৳ ${balance.toInt()}"
+        tvTotalIncome.text = "+ $ ${totalIncome.toInt()}"
+        tvTotalExpense.text = "- $ ${totalExpense.toInt()}"
+        tvBalance.text = "$ ${balance.toInt()}"
     }
 }

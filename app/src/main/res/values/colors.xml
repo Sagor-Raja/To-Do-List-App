@@ -3,21 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Gold Premium Colors -->
-    <color name="premium_dark">#121212</color>
-    <color name="premium_gold">#D4AF37</color>
-    <color name="premium_gold_light">#F9E79F</color>
-    <color name="premium_card_bg">#1E1E1E</color>
+    <!-- Premium Neon Colors -->
+    <color name="neon_purple">#A855F7</color>
+    <color name="neon_pink">#EC4899</color>
+    <color name="neon_blue">#3B82F6</color>
+    <color name="neon_amber">#F59E0B</color>
+    <color name="neon_emerald">#10B981</color>
+    <color name="neon_cyan">#06B6D4</color>
+    <color name="neon_red">#EF4444</color>
     
-    <!-- Claymorphism Shadows -->
-    <color name="clay_shadow_light">#333333</color>
-    <color name="clay_shadow_dark">#000000</color>
-
-    <!-- Futuristic / Neon Colors -->
-    <color name="futuristic_bg">#050505</color>
-    <color name="neon_cyan">#00FFFF</color>
-    <color name="neon_purple">#BC13FE</color>
-    <color name="neon_pink">#FF00FF</color>
-    <color name="neon_blue">#1F51FF</color>
-    <color name="card_dark_overlay">#1A1A1A</color>
+    <!-- Premium UI Backgrounds -->
+    <color name="premium_dark">#0F172A</color>
+    <color name="premium_card_bg">#1E293B</color>
+    <color name="premium_gold">#D4AF37</color>
+    <color name="futuristic_bg">#020617</color>
+    
+    <!-- Added missing colors -->
+    <color name="card_dark_overlay">#CC1E293B</color>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_gradient"
+    android:background="@color/premium_dark"
     tools:context=".DailyPlannerActivity">
 
     <!-- Premium Header Section -->
@@ -12,10 +12,10 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="48dp"
+        android:paddingTop="20dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:paddingBottom="20dp">
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"

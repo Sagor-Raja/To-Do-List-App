@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_gradient"
+    android:background="@color/premium_dark"
     tools:context=".Home">
 
-    <!-- Header Section -->
+    <!-- Premium Header Section -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -29,16 +29,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dashboard"
-                    android:textColor="#1E293B"
-                    android:textSize="32sp"
+                    android:text="Productivity Hub"
+                    android:textColor="@color/premium_gold"
+                    android:textSize="30sp"
                     android:fontFamily="sans-serif-black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Let's be productive today!"
-                    android:textColor="#64748B"
+                    android:text="Control your daily objectives"
+                    android:textColor="#888888"
                     android:textSize="14sp"
                     android:layout_marginTop="2dp"/>
             </LinearLayout>
@@ -49,8 +49,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#CCFFFFFF">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/premium_card_bg"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/premium_gold">
 
                 <ImageView
                     android:id="@+id/menu_icon"
@@ -58,12 +60,12 @@
                     android:layout_height="match_parent"
                     android:src="@android:drawable/ic_menu_sort_by_size"
                     android:padding="12dp"
-                    app:tint="#334155" />
+                    app:tint="@color/premium_gold" />
             </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Main Content Grid -->
+    <!-- Content Grid -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -79,253 +81,230 @@
             android:padding="12dp"
             android:alignmentMode="alignMargins">
 
-            <!-- 1. To-Do List -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 1: Daily Work Checklist -->
+            <FrameLayout
                 android:id="@+id/card_todo"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:src="@android:drawable/ic_menu_agenda"
-                        app:tint="#A855F7"/>
+                        app:tint="@color/premium_gold"/>
                     <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="To-Do List"
-                        android:textColor="#1E293B"
+                        android:text="Work Checklist"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Check Tasks"
+                        android:text="Stay Productive"
                         android:textSize="12sp"
-                        android:textColor="#64748B" />
+                        android:textColor="#888888" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 2. Daily Planner -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 2: Master Routine -->
+            <FrameLayout
                 android:id="@+id/card_daily_planner"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:src="@android:drawable/ic_menu_my_calendar"
-                        app:tint="#EC4899"/>
+                        app:tint="@color/premium_gold"/>
                     <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Daily Plan"
-                        android:textColor="#1E293B"
+                        android:text="Master Routine"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Routine"
+                        android:text="Plan Your Day"
                         android:textSize="12sp"
-                        android:textColor="#64748B" />
+                        android:textColor="#888888" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 3. Calculator -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 3: Expense Tracker -->
+            <FrameLayout
                 android:id="@+id/card_calculate_cost"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:src="@android:drawable/ic_menu_compass"
-                        app:tint="#FFC107"/>
+                        app:tint="@color/premium_gold"/>
                     <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calculator"
-                        android:textColor="#1E293B"
+                        android:text="Expense Tracker"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Maths"
+                        android:text="Track Everything"
                         android:textSize="12sp"
-                        android:textColor="#64748B" />
+                        android:textColor="#888888" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 4. Goal Progress -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 4: Goal Mastery -->
+            <FrameLayout
                 android:id="@+id/card_goal_progress"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@android:drawable/btn_star_big_on"
+                        app:tint="@color/premium_gold"/>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Goals"
-                        android:textColor="#1E293B"
+                        android:text="Goal Mastery"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
-                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                        android:textStyle="bold"/>
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:progress="65"
-                        app:trackThickness="6dp"
-                        app:indicatorColor="#F43F5E"
+                        android:layout_marginTop="8dp"
+                        app:trackThickness="4dp"
+                        app:indicatorColor="@color/premium_gold"
                         app:trackCornerRadius="10dp"
-                        app:trackColor="#E2E8F0" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:text="65%"
-                        android:textSize="12sp"
-                        android:textColor="#64748B"
-                        android:layout_marginTop="4dp"/>
+                        app:trackColor="#33D4AF37" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 5. Ideas -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 5: Idea Vault -->
+            <FrameLayout
                 android:id="@+id/card_idea"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:src="@android:drawable/ic_menu_search"
-                        app:tint="#3B82F6"/>
+                        app:tint="@color/premium_gold"/>
                     <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ideas"
-                        android:textColor="#1E293B"
+                        android:text="Idea Vault"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Think Big"
+                        android:text="Save Your Thoughts"
                         android:textSize="12sp"
-                        android:textColor="#64748B" />
+                        android:textColor="#888888" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 6. Documents -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 6: Digital Vault -->
+            <FrameLayout
                 android:id="@+id/card_document"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="170dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="20dp">
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:src="@android:drawable/ic_menu_edit"
-                        app:tint="#10B981"/>
+                        app:tint="@color/premium_gold"/>
                     <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Documents"
-                        android:textColor="#1E293B"
+                        android:text="Digital Vault"
+                        android:textColor="@color/premium_gold"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Keep Safe"
+                        android:text="Secure Assets"
                         android:textSize="12sp"
-                        android:textColor="#64748B" />
+                        android:textColor="#888888" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
-            <!-- 7. Ask AI -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Card 7: AI Assistant -->
+            <FrameLayout
                 android:id="@+id/card_ask_ai"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_columnSpan="2"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:padding="24dp">
@@ -333,7 +312,7 @@
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:src="@android:drawable/ic_dialog_info"
-                        app:tint="#8B5CF6"/>
+                        app:tint="@color/premium_gold"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -342,19 +321,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ask AI"
-                            android:textColor="#1E293B"
+                            android:text="AI Partner"
+                            android:textColor="@color/premium_gold"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Smart AI Assistant"
+                            android:text="Ask anything to your assistant"
                             android:textSize="13sp"
-                            android:textColor="#64748B"/>
+                            android:textColor="#888888"/>
                     </LinearLayout>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
         </GridLayout>
     </androidx.core.widget.NestedScrollView>
@@ -368,25 +347,21 @@
         android:layout_margin="20dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="8dp"
-        android:backgroundTint="@android:color/transparent">
+        app:cardBackgroundColor="@color/premium_card_bg"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/premium_gold">
         
-        <RelativeLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/glass_card_bg">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                app:elevation="0dp"
-                app:itemIconSize="22dp"
-                app:labelVisibilityMode="unlabeled"
-                app:itemIconTint="@drawable/bottom_nav_color_selector"
-                app:itemTextColor="@drawable/bottom_nav_color_selector"
-                app:menu="@menu/bottom_nav_menu" />
-        </RelativeLayout>
+            android:background="@android:color/transparent"
+            app:elevation="0dp"
+            app:itemIconSize="22dp"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/premium_gold"
+            app:itemTextColor="@color/premium_gold"
+            app:menu="@menu/bottom_nav_menu" />
     </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_gradient">
+    android:background="@color/premium_dark">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
             android:paddingStart="12dp"
-            app:title="আমার খাতা"
-            app:titleTextColor="#1E293B"
+            app:title="Expense Tracker"
+            app:titleTextColor="@color/premium_gold"
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:fontFamily="sans-serif-black"/>
 
@@ -29,9 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            app:tabTextColor="#64748B"
-            app:tabSelectedTextColor="#8B5CF6"
-            app:tabIndicatorColor="#8B5CF6"
+            app:tabTextColor="#888888"
+            app:tabSelectedTextColor="@color/premium_gold"
+            app:tabIndicatorColor="@color/premium_gold"
             app:tabIndicatorHeight="3dp"
             app:tabRippleColor="@android:color/transparent"
             app:tabIndicatorFullWidth="false">
@@ -39,17 +39,17 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="দিন"/>
+                android:text="Day"/>
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="মাস"/>
+                android:text="Month"/>
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="বছর"/>
+                android:text="Year"/>
 
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -80,7 +80,7 @@
                     android:layout_height="44dp"
                     android:background="@drawable/glass_card_bg"
                     android:src="@android:drawable/ic_media_previous"
-                    app:tint="#334155"
+                    app:tint="@color/premium_gold"
                     android:padding="10dp"
                     android:contentDescription="Previous"/>
 
@@ -88,10 +88,10 @@
                     android:id="@+id/tvSelectedPeriod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="জানুয়ারি ২০২৬"
+                    android:text="January 2026"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/premium_gold"
                     android:paddingHorizontal="24dp"/>
 
                 <ImageButton
@@ -100,23 +100,21 @@
                     android:layout_height="44dp"
                     android:background="@drawable/glass_card_bg"
                     android:src="@android:drawable/ic_media_next"
-                    app:tint="#334155"
+                    app:tint="@color/premium_gold"
                     android:padding="10dp"
                     android:contentDescription="Next"/>
             </LinearLayout>
 
-            <!-- Summary Glass Card -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Summary Card -->
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                android:background="@drawable/clay_card_bg"
+                android:padding="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/glass_card_bg"
                     android:orientation="vertical"
                     android:padding="24dp">
 
@@ -124,15 +122,15 @@
                         android:id="@+id/tvSummaryTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="মাসের সারাংশ"
-                        android:textColor="#64748B"
+                        android:text="Monthly Summary"
+                        android:textColor="@color/premium_gold"
                         android:textStyle="bold"
                         android:textSize="14sp"/>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#1A000000"
+                        android:background="#1AFFFFFF"
                         android:layout_marginVertical="16dp"/>
 
                     <LinearLayout
@@ -148,14 +146,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="মোট আয়"
+                                android:text="Total Income"
                                 android:textSize="12sp"
-                                android:textColor="#64748B"/>
+                                android:textColor="#888888"/>
                             <TextView
                                 android:id="@+id/tvTotalIncome"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="৳ ০"
+                                android:text="$ 0"
                                 android:textColor="#10B981"
                                 android:textSize="22sp"
                                 android:textStyle="bold"/>
@@ -170,14 +168,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="মোট খরচ"
+                                android:text="Total Expense"
                                 android:textSize="12sp"
-                                android:textColor="#64748B"/>
+                                android:textColor="#888888"/>
                             <TextView
                                 android:id="@+id/tvTotalExpense"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="৳ ০"
+                                android:text="$ 0"
                                 android:textColor="#F43F5E"
                                 android:textSize="22sp"
                                 android:textStyle="bold"/>
@@ -198,30 +196,30 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="হাতে জমা আছে:"
-                            android:textColor="#065F46"
+                            android:text="Net Balance:"
+                            android:textColor="@color/premium_gold"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/tvBalance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="০ ৳"
-                            android:textColor="#059669"
+                            android:text="$ 0"
+                            android:textColor="#10B981"
                             android:textSize="24sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="বিস্তারিত লেনদেন"
+                android:text="Transaction History"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#1E293B"
+                android:textColor="@color/premium_gold"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="12dp"
                 android:layout_marginStart="4dp"/>
@@ -242,11 +240,11 @@
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="লেনদেন যোগ করুন"
-        android:textColor="#FFFFFF"
+        android:text="Add Transaction"
+        android:textColor="@color/premium_dark"
         app:icon="@android:drawable/ic_input_add"
-        app:iconTint="#FFFFFF"
-        android:backgroundTint="#8B5CF6"
+        app:iconTint="@color/premium_dark"
+        android:backgroundTint="@color/premium_gold"
         android:layout_gravity="bottom|end"
         android:layout_margin="24dp"
         app:elevation="8dp"/>
