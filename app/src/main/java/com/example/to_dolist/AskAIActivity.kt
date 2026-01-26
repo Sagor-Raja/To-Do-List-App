@@ -35,6 +35,7 @@ class AskAIActivity : AppCompatActivity() {
             modelName = "gemini-1.5-flash",
             apiKey = apiKey
         )
+//        coment
 
         btnAsk.setOnClickListener {
             val query = etQuestion.text.toString().trim()
