@@ -1,287 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/premium_dark">
 
-    <!-- 1. Top Header -->
-    <RelativeLayout
-        android:id="@+id/topHeader"
+    <!-- 1. Header Section -->
+    <LinearLayout
+        android:id="@+id/headerMission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="16dp">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="48dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Goals"
-                android:textColor="#1E293B"
-                android:textSize="34sp"
-                android:fontFamily="sans-serif-black" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Plan &amp; track your objectives"
-                android:textColor="#64748B"
-                android:textSize="14sp"/>
-        </LinearLayout>
+            android:text="GOALS"
+            android:textColor="@color/premium_gold"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.1"/>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:strokeWidth="1dp"
-            app:strokeColor="#F1F5F9">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@android:drawable/ic_menu_sort_by_size"
-                android:padding="5.dp"
-                app:tint="#1E293B" />
-        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/tvLifeMission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MISSION: Master Your Life Roadmap"
+            android:textColor="#888888"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- 2. Target/Bullseye Progress -->
+    <RelativeLayout
+        android:id="@+id/targetSection"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/headerMission"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgTargetBullseye"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/goals_img"
+            android:padding="15dp" />
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <!-- 3. Dynamic Goal List (RecyclerView) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGoalsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/topHeader"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="20dp"
         android:clipToPadding="false"
-        android:paddingBottom="120dp"
-        android:scrollbars="none">
+        android:paddingBottom="100dp"
+        app:layout_constraintTop_toBottomOf="@id/targetSection"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- 2. Calendar Strip Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="32dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/glass_card_bg"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_media_previous" app:tint="#1E293B"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:text="April 2024" android:textColor="#1E293B" android:textStyle="bold" android:textSize="16sp"/>
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_alignParentEnd="true" android:src="@android:drawable/ic_media_next" app:tint="#1E293B"/>
-                    </RelativeLayout>
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="S\n21" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="M\n22" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="T\n23" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="44dp" android:layout_height="54dp" android:text="T\n24" android:gravity="center" android:textColor="#FFFFFF" android:background="@drawable/circle_bg" android:backgroundTint="#8B5CF6" android:textStyle="bold" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="W\n25" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="T\n26" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="S\n27" android:gravity="center" android:textColor="#64748B" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- 3. Overall Goal Progress -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="32dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/glass_card_bg"
-                    android:padding="24dp">
-                    <TextView android:id="@+id/txtProgress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Overall Goal Progress" android:textColor="#1E293B" android:textSize="16sp" android:fontFamily="sans-serif-medium"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="58%" android:textColor="#1E293B" android:textSize="42sp" android:fontFamily="sans-serif-black" android:layout_marginTop="-8dp"/>
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/mainProg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/txtProgress"
-                        android:progress="58"
-                        android:layout_marginTop="20dp"
-                        app:trackThickness="14dp"
-                        app:trackCornerRadius="10dp"
-                        app:indicatorColor="#8B5CF6"
-                        app:trackColor="#E2E8F0" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/mainProg" android:text="12 Completed" android:textColor="#64748B" android:textSize="12sp" android:layout_marginTop="12dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/mainProg" android:layout_alignParentEnd="true" android:text="12 Goals in 20 Goals" android:textColor="#64748B" android:textSize="12sp" android:layout_marginTop="12dp"/>
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- 4. Quick Action Pill Buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="24dp">
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:text="+ New Goal"
-                    app:cornerRadius="27dp"
-                    android:textAllCaps="false"
-                    app:backgroundTint="#F3E8FF"
-                    android:textColor="#8B5CF6"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:elevation="0dp"/>
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:text="Filter"
-                    android:layout_marginStart="10dp"
-                    app:cornerRadius="27dp"
-                    android:textAllCaps="false"
-                    app:backgroundTint="#F1F5F9"
-                    android:textColor="#1E293B"
-                    app:icon="@android:drawable/ic_menu_manage"
-                    app:iconTint="#1E293B"
-                    app:elevation="0dp"/>
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:text="Sort"
-                    android:layout_marginStart="10dp"
-                    app:cornerRadius="27dp"
-                    android:textAllCaps="false"
-                    app:backgroundTint="#F1F5F9"
-                    android:textColor="#1E293B"
-                    app:icon="@android:drawable/ic_menu_sort_by_size"
-                    app:iconTint="#1E293B"
-                    app:elevation="0dp"/>
-            </LinearLayout>
-
-            <!-- 5. Goals Section: Daily -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp"
-                android:gravity="center_vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Daily Goals" android:textColor="#1E293B" android:textStyle="bold" android:textSize="18sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" | Today" android:textColor="#64748B" android:textSize="14sp" android:layout_marginStart="4dp"/>
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/glass_card_bg" android:padding="18dp" android:gravity="center_vertical">
-                    <CheckBox android:layout_width="28dp" android:layout_height="28dp" android:buttonTint="#8B5CF6" android:checked="true"/>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Morning Workout" android:textColor="#1E293B" android:textStyle="bold" android:textSize="16sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8:00 AM" android:textColor="#64748B" android:textSize="13sp" android:layout_marginTop="2dp"/>
-                        <com.google.android.material.progressindicator.LinearProgressIndicator android:layout_width="120dp" android:layout_height="wrap_content" android:progress="70" android:layout_marginTop="10dp" app:trackThickness="6dp" app:trackCornerRadius="10dp" app:indicatorColor="#8B5CF6" app:trackColor="#F1F5F9"/>
-                    </LinearLayout>
-                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/arrow_down_float" app:tint="#64748B"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Weekly Goals -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center_vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Weekly Goals" android:textColor="#1E293B" android:textStyle="bold" android:textSize="18sp"/>
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4 / 7 Completed" android:textColor="#64748B" android:textSize="12sp" android:gravity="end"/>
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/glass_card_bg" android:padding="18dp" android:gravity="center_vertical">
-                    <ImageView android:layout_width="44dp" android:layout_height="44dp" android:src="@android:drawable/ic_dialog_info" app:tint="#FFC107" android:background="@drawable/circle_bg" android:backgroundTint="#FFFBEB" android:padding="10dp"/>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Work on Side Project" android:textColor="#1E293B" android:textStyle="bold" android:textSize="16sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 / 7" android:textColor="#64748B" android:textSize="13sp" android:layout_marginTop="2dp"/>
-                        <com.google.android.material.progressindicator.LinearProgressIndicator android:layout_width="160dp" android:layout_height="wrap_content" android:progress="60" android:layout_marginTop="10dp" app:trackThickness="6dp" app:trackCornerRadius="10dp" app:indicatorColor="#3B82F6" app:trackColor="#F1F5F9"/>
-                    </LinearLayout>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 / 7" android:textColor="#1E293B" android:textStyle="bold" android:textSize="14sp"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- 6. Floating Glass Bottom Navigation -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_nav_card"
+    <!-- 4. Permanent Create Goal Footer -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCreateGoal"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="64dp"
         android:layout_margin="20dp"
-        app:cardCornerRadius="38dp"
-        app:cardElevation="12dp"
-        android:backgroundTint="@android:color/transparent">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/glass_card_bg" android:orientation="horizontal" android:gravity="center">
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_sort_by_size" app:tint="#64748B"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textSize="10sp" android:textColor="#64748B" android:layout_marginTop="4dp"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:background="@drawable/circle_bg" android:backgroundTint="#F3E8FF" android:padding="8dp">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/btn_star_big_on" app:tint="#8B5CF6"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Goals" android:textSize="10sp" android:textColor="#8B5CF6" android:textStyle="bold" android:layout_marginTop="4dp"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_agenda" app:tint="#64748B"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stats" android:textSize="10sp" android:textColor="#64748B" android:layout_marginTop="4dp"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_my_calendar" app:tint="#64748B"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Profile" android:textSize="10sp" android:textColor="#64748B" android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        android:text="+ CREATE NEW GOAL"
+        android:textColor="@color/premium_dark"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:backgroundTint="@color/premium_gold"
+        app:cornerRadius="20dp"
+        app:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Floating Action Button (Teal Circular Icon) -->
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="#2DD4BF">
-        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@android:drawable/ic_input_add" android:padding="16dp" app:tint="#FFFFFF"/>
-    </com.google.android.material.card.MaterialCardView>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="ExtraText">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -24,25 +22,20 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Welcome_Scren"
-            android:exported="false" />
 
+        <activity android:name=".Welcome_Scren" android:exported="false" />
         <activity android:name=".Home" android:exported="false" />
         <activity android:name=".ToDoActivity" android:exported="false" />
         <activity android:name=".DailyPlannerActivity" android:exported="false" />
         <activity android:name=".CalculatorActivity" android:exported="false" />
         <activity android:name=".GoalProgressActivity" android:exported="false" />
+        <activity android:name=".GoalDetailsActivity" android:exported="false" />
         <activity android:name=".IdeaActivity" android:exported="false" />
         <activity android:name=".DocumentActivity" android:exported="false" />
         <activity android:name=".AskAIActivity" android:exported="false" />
-        <meta-data
-            android:name="com.google.ai.client.generativeai.api_key"
-            android:value="$AIzaSyD7kQef4H7_wZVKFLudQLl_UWFcLQZdf-Q " />
         <activity android:name=".RoutineDetailsActivity" android:exported="false" />
         <activity android:name=".ProfileActivity" android:exported="false" />
         <activity android:name=".SettingsActivity" android:exported="false" />

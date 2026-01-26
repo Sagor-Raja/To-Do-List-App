@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/premium_dark">
+
+    <!-- 1. Elite Header Section -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="52dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toStartOf="@+id/btnBack">
+
+            <TextView
+                android:id="@+id/tvGoalDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elite Mastery Plan"
+                android:textColor="@color/premium_gold"
+                android:textSize="28sp"
+                android:fontFamily="sans-serif-black" />
+
+            <TextView
+                android:id="@+id/tvRemainingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏳ mission in progress..."
+                android:textColor="#888888"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/premium_card_bg"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/premium_gold">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_menu_revert"
+                android:padding="10dp"
+                app:tint="@color/premium_gold" />
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:clipToPadding="false"
+        android:paddingBottom="40dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <!-- 2. Performance Dashboard -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/clay_card_bg"
+                android:padding="2dp"
+                android:layout_marginBottom="24dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:weightSum="3"
+                    android:gravity="center">
+                    
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥 STREAK" android:textColor="#888888" android:textSize="9sp" android:textStyle="bold"/>
+                        <TextView android:id="@+id/tvStreak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="15 Days" android:textColor="@color/neon_amber" android:textStyle="bold" android:textSize="13sp"/>
+                    </LinearLayout>
+
+                    <View android:layout_width="1dp" android:layout_height="24dp" android:background="#33FFFFFF"/>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎯 VELOCITY" android:textColor="#888888" android:textSize="9sp" android:textStyle="bold"/>
+                        <TextView android:id="@+id/tvProgressInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="45%" android:textColor="@color/premium_gold" android:textStyle="bold" android:textSize="13sp"/>
+                    </LinearLayout>
+
+                    <View android:layout_width="1dp" android:layout_height="24dp" android:background="#33FFFFFF"/>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡ MODE" android:textColor="#888888" android:textSize="9sp" android:textStyle="bold"/>
+                        <TextView android:id="@+id/tvMode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BEAST 🔥" android:textColor="@color/neon_red" android:textStyle="bold" android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressOverall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="45"
+                app:trackThickness="8dp"
+                app:indicatorColor="@color/premium_gold"
+                app:trackCornerRadius="10dp"
+                app:trackColor="#26D4AF37" 
+                android:layout_marginBottom="32dp"/>
+
+            <!-- 3. STRATEGIC ROADMAP (VERTICAL TIMELINE) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STRATEGIC JOURNEY"
+                android:textColor="@color/premium_gold"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:layout_marginBottom="16dp"/>
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/clay_card_bg" android:padding="2dp" android:layout_marginBottom="10dp">
+                <TextView android:id="@+id/tvYearly" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:text="🎯 Yearly: Visionary Excellence" android:textColor="@color/white" android:textStyle="bold" android:textSize="14sp"/>
+            </FrameLayout>
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/clay_card_bg" android:padding="2dp" android:layout_marginBottom="10dp">
+                <TextView android:id="@+id/tvQuarterly" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:text="🏆 Quarterly: Structural Foundation" android:textColor="@color/white" android:textSize="14sp"/>
+            </FrameLayout>
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/clay_card_bg" android:padding="2dp" android:layout_marginBottom="10dp">
+                <TextView android:id="@+id/tvMonthly" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:text="📆 Monthly: Focus Execution" android:textColor="@color/white" android:textSize="14sp"/>
+            </FrameLayout>
+
+            <!-- Corrected ID for Weekly -->
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/clay_card_bg" android:padding="2dp" android:layout_marginBottom="10dp">
+                <TextView android:id="@+id/tvWeekly" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:text="🗓 Weekly: Performance Review" android:textColor="@color/white" android:textSize="14sp"/>
+            </FrameLayout>
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/clay_card_bg" android:padding="2dp" android:layout_marginBottom="32dp">
+                <TextView android:id="@+id/tvDailyRoadmap" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:text="☀️ Daily: Core Strategic Task" android:textColor="@color/white" android:textSize="14sp"/>
+            </FrameLayout>
+
+            <!-- 4. OBSTACLES & SOLUTIONS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POTENTIAL BARRIERS"
+                android:textColor="@color/premium_gold"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:layout_marginBottom="12dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/glass_card_bg"
+                android:backgroundTint="#1AEE4444"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp">
+                <TextView
+                    android:id="@+id/tvObstacles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="⚠ Barrier: Solution -> Action Plan"
+                    android:textColor="#DDDDDD"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="6dp"/>
+            </FrameLayout>
+
+            <!-- 5. NEXT EXECUTION STEP -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TODAY'S MISSION"
+                android:textColor="@color/premium_gold"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:layout_marginBottom="12dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/clay_card_bg"
+                android:padding="4dp"
+                android:layout_marginBottom="24dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+                    <TextView android:id="@+id/tvTodayTask" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Executing your primary objective..." android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold" android:lineSpacingExtra="6dp"/>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1AFFFFFF" android:layout_marginVertical="24dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnDone" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:text="MISSION DONE" android:textColor="@color/premium_dark" android:textStyle="bold" app:backgroundTint="@color/premium_gold" app:cornerRadius="16dp" android:layout_marginEnd="8dp"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnSkip" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="0.5" android:text="SKIP" android:textColor="#888888" style="@style/Widget.MaterialComponents.Button.OutlinedButton" app:strokeColor="#33D4AF37" app:cornerRadius="16dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- 6. AI Success Recommendation -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#0D8B5CF6"
+                app:strokeWidth="1dp"
+                app:strokeColor="#1AA855F7">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🤖" android:textSize="20sp"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="AI TIP: Focus on consistency, not speed. Keep moving!" android:textColor="#BBBBBB" android:textSize="12sp" android:textStyle="italic"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
