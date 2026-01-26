@@ -29,6 +29,8 @@
             app:tint="#D4AF37" />
     </com.google.android.material.card.MaterialCardView>
 
+<!--    vjgiuguigiou-->
+
     <!-- App Name and Slogan at Bottom -->
     <LinearLayout
         android:layout_width="wrap_content"
